@@ -35,7 +35,7 @@ function sanitizeParams(params) {
     }
 
     return {
-        page: params.page,
+        page: params.page ?? 0,
         perPage: params.perPage ?? 5,
         orderBy,
         where,
