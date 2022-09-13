@@ -4,7 +4,7 @@ async function getSongs(params) {
     const sanitizedParams = sanitizeParams(params);
 
     const skip = (sanitizedParams.page + 1) * sanitizedParams.perPage;
-    console.log(params, skip)
+    console.log(sanitizedParams, skip)
 
     const songs = await prisma.song.findMany({
         skip,
