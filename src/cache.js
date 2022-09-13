@@ -1,8 +1,12 @@
 const redis = require('redis')
 
-const client = redis.createClient(process.env.CACHE_PORT || 6379, process.env.CACHE_HOST, {
-    no_ready_check: true
-});
+const client = redis.createCluster({
+    rootNodes: [
+      {
+        url: process.env.CACHE_URL
+      }
+    ]
+  });
 
 client.on('error', (err) => console.log('Redis Client Error', err));
 
