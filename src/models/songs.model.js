@@ -3,7 +3,7 @@ const prisma =  require('../../prisma/prismaClient');
 async function getSongs(params) {
     const sanitizedParams = sanitizeParams(params);
 
-    const skip = (sanitizedParams.page) * sanitizedParams.perPage;
+    const skip = (sanitizedParams.page + 1) * sanitizedParams.perPage;
 
     const songs = await prisma.song.findMany({
         skip,
@@ -35,7 +35,7 @@ function sanitizeParams(params) {
     }
 
     return {
-        page: params.page > 0 ? params.page : 1,
+        page: params.page,
         perPage: params.perPage ?? 5,
         orderBy,
         where,
