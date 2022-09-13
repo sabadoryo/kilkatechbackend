@@ -10,7 +10,7 @@ const server = http.createServer(app);
 
 async function startServer() {
   server.listen(PORT, () => {
-    cache.connect();
+    // cache.connect();
     console.log(`Listening on port ${PORT}...`);
   });
 }
